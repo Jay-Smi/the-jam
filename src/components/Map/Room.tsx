@@ -13,9 +13,9 @@ const Room = ({ room }: { room: RoomType }) => {
   // ** handlers ** //
   return (
     <group>
-      {tiles.map((tile, i) => (
-        <Tile key={i} tile={tile} />
-      ))}
+      {tiles.map((row, i) =>
+        row.map((tile, j) => <Tile key={i + j} tile={tile} />)
+      )}
     </group>
   )
 }

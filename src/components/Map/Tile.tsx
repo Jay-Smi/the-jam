@@ -1,6 +1,6 @@
+import { merge } from "lodash"
+import { Tile as TileType, VelocityPosition } from "../../types/game-types"
 import { useAtom } from "jotai"
-import { Tile as TileType } from "../../types/game-types"
-import { $entities } from "../../state/state"
 
 export const Tile = ({ tile }: { tile: TileType }) => {
   // ** global state ** //
@@ -11,8 +11,12 @@ export const Tile = ({ tile }: { tile: TileType }) => {
   const { id: tileId, type, position } = tile
 
   // ** handlers ** //
+
   return (
-    <mesh position={[position.x, position.y, 0]}>
+    <mesh
+      position={[position.x, position.y, 0]}
+      onClick={() => Dusk.actions.playerMove(position)}
+    >
       <planeGeometry />
       <meshStandardMaterial color={type === "floor" ? "green" : "black"} />
     </mesh>

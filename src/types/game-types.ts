@@ -15,13 +15,14 @@ type PositionBase = {
   y: number
 }
 
-type Position = PositionBase & {
+export type Position = PositionBase & {
   roomId: string
 }
 
-type VelocityPosition = Position & {
+export type VelocityPosition = Position & {
   direction: Direction
-  speed: 0 | 1 | 2
+  speed: 1 | 2
+  movingTo: Position | null
 }
 
 type EntityType = "player" | "monster" | "object"
@@ -52,15 +53,21 @@ export type Player = LivingEntity & {
   type: "player"
 }
 
-type Monster = LivingEntity & {
+export type Monster = LivingEntity & {
   type: "monster"
 }
 
-type Object = EnvEntity & {
+export type Object = EnvEntity & {
   type: "object"
 }
 
 export type AnyEntity = Player | Monster | Object
+
+export type GameEntities = {
+  playerEntities: Player[]
+  npcEntities: Monster[]
+  envEntities: Object[]
+}
 
 export type Tile = {
   id: string
@@ -68,7 +75,7 @@ export type Tile = {
   position: Position
 }
 
-export type RoomTiles = Tile[]
+export type RoomTiles = Tile[][]
 
 export type Room = {
   id: string
@@ -81,9 +88,13 @@ export type Map = Room[]
 
 export type GameState = {
   status: GameStatus
-  entities: AnyEntity[]
+  playerEntities: Player[]
+  npcEntities: Monster[]
+  envEntities: Object[]
   map: Map
   discoveredRooms: string[]
 }
 
-export type GameActions = {}
+export type GameActions = {
+  playerMove: (payload: Position) => void
+}
