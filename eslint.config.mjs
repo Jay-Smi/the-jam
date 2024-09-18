@@ -1,6 +1,6 @@
 import { fixupPluginRules } from "@eslint/compat"
 import js from "@eslint/js"
-import duskPlugin from "dusk-games-sdk/eslint.js"
+import runePlugin from "rune-sdk/eslint.js"
 import prettier from "eslint-plugin-prettier/recommended"
 import pluginReact from "eslint-plugin-react"
 import pluginReactHooks from "eslint-plugin-react-hooks"
@@ -24,7 +24,7 @@ export default [
     },
   },
   js.configs.recommended,
-  ...duskPlugin.configs.recommended,
+  ...runePlugin.configs.recommended,
   pluginReact.configs.flat.recommended,
   pluginReact.configs.flat["jsx-runtime"],
   ...tseslint.configs.recommended,

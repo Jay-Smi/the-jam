@@ -1,4 +1,4 @@
-import type { PlayerId } from "dusk-games-sdk/multiplayer"
+import type { PlayerId } from "rune-sdk"
 
 export type GameSetupState = {
   yourPlayerId: PlayerId | undefined
@@ -10,7 +10,7 @@ export type GameStatus = "gettingReady" | "countdown" | "playing" | "gameOver"
 export type LivingEntityStatus = "pending" | "alive" | "dead"
 export type Direction = "N" | "E" | "S" | "W" | "NE" | "SE" | "SW" | "NW"
 
-type PositionBase = {
+export type PositionBase = {
   x: number
   y: number
 }
@@ -69,9 +69,11 @@ export type GameEntities = {
   envEntities: Object[]
 }
 
+export type TileType = "wall" | "floor" | "door" | "obstacle"
+
 export type Tile = {
   id: string
-  type: "wall" | "floor"
+  type: TileType
   position: Position
 }
 

@@ -1,7 +1,8 @@
+import { memo } from "react"
 import { AnyEntity } from "../../types/game-types"
-import { Player } from "./Player"
+import Player from "./Player"
 
-export const Entity = ({ entity }: { entity: AnyEntity }) => {
+const Entity = ({ entity }: { entity: AnyEntity }) => {
   // ** global state **
 
   // ** local state ** //
@@ -16,3 +17,4 @@ export const Entity = ({ entity }: { entity: AnyEntity }) => {
       return null
   }
 }
+export default memo(Entity)

@@ -15,10 +15,12 @@ export const Tile = ({ tile }: { tile: TileType }) => {
   return (
     <mesh
       position={[position.x, position.y, 0]}
-      onClick={() => Dusk.actions.playerMove(position)}
+      onClick={() => Rune.actions.playerMove(position)}
     >
       <planeGeometry />
-      <meshStandardMaterial color={type === "floor" ? "green" : "black"} />
+      <meshStandardMaterial
+        color={type === "floor" ? "green" : type === "door" ? "red" : "black"}
+      />
     </mesh>
   )
 }

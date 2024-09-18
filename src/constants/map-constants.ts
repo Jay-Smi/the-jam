@@ -1,1 +1,1 @@
-export const ROOM_SIZE = 16
+export const ROOM_SIZE = 18
